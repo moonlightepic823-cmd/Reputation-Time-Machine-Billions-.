@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Billions | Reputation Time Machine</title>
+
+<style>
+body {
+  background: #0b0f1a;
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 420px;
+}
+
+h1 {
+  text-align: center;
+  color: #5cffc6;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: #11162a;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 12px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: #5cffc6;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.metric {
+  display: flex;
+  justify-content: space-between;
+  margin: 12px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #1c2340;
+}
+
+.note {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: 15px;
+}
+
+.hidden {
+  display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>⏳ Reputation Time Machine</h1>
+  <p class="subtitle">
+    If Billions reputation existed 3 years ago, this would be your trust profile.
+  </p>
+
+  <div class="card">
+    <label>Enter Wallet Address</label>
+    <input id="wallet" placeholder="0xABC...123" />
+    <button onclick="runSimulation()">Run Simulation</button>
+  </div>
+
+  <div id="result" class="card hidden" style="margin-top:20px">
+    <h3>🔍 Simulated Reputation</h3>
+
+    <div class="metric">
+      <span>Early Adopter Trust</span>
+      <strong id="early"></strong>
+    </div>
+
+    <div class="metric">
+      <span>Sybil Risk</span>
+      <strong id="sybil"></strong>
+    </div>
+
+    <div class="metric">
+      <span>Growth Pattern</span>
+      <strong id="growth"></strong>
+    </div>
+
+    <div class="metric">
+      <span>Projected Rank</span>
+      <strong id="rank"></strong>
+    </div>
+
+    <p class="note">
+      This is a simulated narrative.  
+      Real Billions reputation will be provable, persistent & human-centric.
+    </p>
+  </div>
+</div>
+
+<script>
+function runSimulation() {
+  const wallet = document.getElementById("wallet").value;
+
+  if (wallet.length < 6) {
+    alert("Enter a valid wallet address");
+    return;
+  }
+
+  const early = pick(["Very High", "High", "Medium"]);
+  const sybil = pick(["Very Low", "Low", "Medium"]);
+  const growth = pick([
+    "Organic & Consistent",
+    "Slow then Exponential",
+    "Early Spike then Stable"
+  ]);
+  const rank = pick(["Top 8%", "Top 15%", "Top 25%"]);
+
+  document.getElementById("early").innerText = early;
+  document.getElementById("sybil").innerText = sybil;
+  document.getElementById("growth").innerText = growth;
+  document.getElementById("rank").innerText = rank;
+
+  document.getElementById("result").classList.remove("hidden");
+}
+
+function pick(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+</script>
+
+</body>
+</html>
